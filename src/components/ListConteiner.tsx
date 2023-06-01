@@ -2,7 +2,7 @@ import React from 'react'
 import './styles/main.css'
 import ItemList from './ItemList'
 
-interface Item{
+export interface Item{
     name: string,
     port: number
 }

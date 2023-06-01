@@ -28,7 +28,7 @@ const ItemList:React.FC<Props> = ({name, port})=>{
     async function view_log(event: React.MouseEvent<HTMLButtonElement>){
         let log:string = ""
         await get_log().then(data=>{
-            //тут рендеримо сторінку з логами
+            console.log(data)
         })
     }
 

@@ -6,10 +6,11 @@ interface Props{
     port:number,
     path:string,
     name: string,
-    delay:number
+    delay:number,
+    on_change:any
 }
 
-const ButtonRun: React.FC<Props> = ({port, path, name, delay})=>{
+const ButtonRun: React.FC<Props> = ({port, path, name, delay, on_change})=>{
 
     async function fetch_create():Promise<any>{
         const url = new URL(`http://localhost:${port_server}/create?port=${port}&path_openapi=${path}&name_project=${name}&delay=${delay}`);
@@ -70,10 +71,9 @@ const ButtonRun: React.FC<Props> = ({port, path, name, delay})=>{
             await fetch_run().then(res_run=>{
                 console.log(res_run)
                 alert(res_run);
+                on_change(false, true)
             })
         })
-
-        console.log(port, name, path, delay)
     }
 
     return(
