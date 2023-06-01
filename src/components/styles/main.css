@@ -31,7 +31,7 @@ label{
     text-align: left;
 }
 
-.Input-conteiner{
+#Input-conteiner{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
     grid-gap: 15px; 

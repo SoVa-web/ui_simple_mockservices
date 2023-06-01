@@ -1,7 +1,13 @@
 {
   "name": "ui_simple_mockservices",
   "version": "0.1.0",
-  "private": true,
+  "author": "https://github.com/SoVa-web",
+  "license": "ISC",
+  "description": "It`s test relise next project https://github.com/SoVa-web/app_mockservers",
+  "engines": {
+    "node": "v18.16.0",
+    "npm": "9.6.7"
+  },
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-typescript": "^7.21.5",
@@ -33,7 +39,6 @@
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.4.3",
     "jest-resolve": "^27.4.2",
     "jest-watch-typeahead": "^1.0.0",
     "mini-css-extract-plugin": "^2.4.5",
@@ -86,9 +91,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "ts-loader": "^9.4.3"
   },
   "jest": {
     "roots": [

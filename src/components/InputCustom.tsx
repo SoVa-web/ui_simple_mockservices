@@ -4,13 +4,15 @@ import './styles/main.css';
 interface Props {
     label: string;
     type: string;
+    on_change: any
   }
 
-const InputCustom: React.FC<Props> = ({ label, type }) => {
-    const [value, setValue] = useState('');
+const InputCustom: React.FC<Props> = ({ label, type, on_change}) => {
+    const [value, set_value] = useState('');
   
-    function handleChange(event: ChangeEvent<HTMLInputElement>){
-      setValue(event.target.value);
+    function handle_change(event: ChangeEvent<HTMLInputElement>){
+      set_value(event.target.value);
+      on_change(event.target.value);
     };
   
     return (
@@ -19,7 +21,7 @@ const InputCustom: React.FC<Props> = ({ label, type }) => {
         <input
           type={type}
           value={value}
-          onChange={handleChange}
+          onChange={handle_change}
         />
       </div>
     );
