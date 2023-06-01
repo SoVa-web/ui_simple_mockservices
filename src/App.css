@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  background-color: rgba(0, 0, 0, 1);
+  height: 110px;
+}
+
+.name-header{
+  position: absolute;
+  width: 700px;
+  height: 50px;
+  font-size: 35px;
+  line-height: 50px;
+  color: #FFFFFF;
+}
+
+.App-footer {
+  background-color: rgba(0, 0, 0, 1);
+  height: 120px;
+  margin-bottom: 0;
+}
