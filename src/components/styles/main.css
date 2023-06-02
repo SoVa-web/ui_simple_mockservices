@@ -21,6 +21,8 @@ button{
     flex-direction: column;
     width: 200px;
     text-align: center;
+    align-self: end;
+    border: auto;
 }
 
 input{
@@ -38,7 +40,10 @@ p{
 #Input-conteiner{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
-    grid-gap: 15px; 
+    grid-column-gap: 30px;
+    margin-left: 200px;
+    margin-right: auto;
+    margin-top: 20px;
 }
 
 .content{
@@ -51,7 +56,20 @@ p{
     overflow: 'auto';
 }
 
+.item-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    gap: 20px; 
+    text-align: center;
+    background-color: coral;
+    font-size: 20px;
+    border: 2px solid #000;
+}
+
 .list{
+    display: flex;
+    flex-direction: column;
     height: 400px;
     resize: 'none'; 
     overflow: 'auto';

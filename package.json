@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "https://github.com/SoVa-web",
   "license": "ISC",
-  "description": "It`s test relise next project https://github.com/SoVa-web/app_mockservers",
+  "description": "It`s test relise client web app for https://github.com/SoVa-web/app_mockservers",
   "engines": {
     "node": "v18.16.0",
     "npm": "9.6.7"

@@ -15,11 +15,11 @@ const ItemList:React.FC<Props> = ({name, port, on_change})=>{
     }
 
     return(
-        <li key={`${name}_${port}`}>
+        <div id={`${name}_${port}`} className='item-list'>
             <p>Name mock-service: {name}</p>
             <p>Port: {port}</p>
             <button onClick={view_log}>View details</button>
-        </li>
+        </div>
     )
 }
 
