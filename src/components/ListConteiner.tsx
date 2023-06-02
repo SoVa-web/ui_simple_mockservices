@@ -14,7 +14,7 @@ interface Props{
 
 const ListConteiner:React.FC<Props> = ({list, on_change_item})=>{
     return(
-        <ul className='list content'>
+        <ul className='list'>
             {list.map((item) => (
             <ItemList name={item.name} port={item.port} on_change={on_change_item}></ItemList>
             ))}

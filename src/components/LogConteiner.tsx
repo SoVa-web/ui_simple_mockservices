@@ -10,6 +10,7 @@ const LogConteiner:React.FC<Props> = ({log_file})=>{
     const [log, set_log] = useState('')
     const [log_is, set_get] = useState(false)
 
+
     async function get_log(){
         let data:string = ''
         const url = new URL(`http://localhost:${port_server}/log?name_project=${log_file}`);
@@ -42,14 +43,14 @@ const LogConteiner:React.FC<Props> = ({log_file})=>{
 
     if (!log_is) {
         return (
-            <textarea className='content textarea'
+            <textarea className='textarea'
                 readOnly 
-                value={"Data is loadding. Please wait."}>
+                value={`Data is loadding. Please wait`}>
             </textarea>
         )
     } else {
         return (
-            <textarea className='content textarea'
+            <textarea className='textarea'
                 readOnly 
                 value={log}>
             </textarea>

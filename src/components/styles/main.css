@@ -45,8 +45,14 @@ p{
     height: 400px;
 }
 
-.textarea{
-    width: '100%';  
+.textarea{ 
+    height: 400px;
+    resize: 'none'; 
+    overflow: 'auto';
+}
+
+.list{
+    height: 400px;
     resize: 'none'; 
     overflow: 'auto';
 }

@@ -8,6 +8,7 @@ import port_server from '../port_server';
 import ButtonList from './ButtonList';
 import ButtonNew from './ButtonNew';
 import LogConteiner from './LogConteiner';
+import ButtonStop from './ButtonStop';
 
 function  Main(){
     const [port, set_port] = useState(0);
@@ -20,7 +21,6 @@ function  Main(){
     const [show_details_page, set_show_details_page] = useState(false)
     const [current_name, set_current_name] = useState('')
     const [current_port, set_current_port] = useState(0)
-    const [log_value, set_log] = useState('')
 
     function read_port(new_port:number){
         set_port(new_port)
@@ -127,6 +127,7 @@ function  Main(){
                     <div id='Input-conteiner' className='content'>
                     <LogConteiner log_file={current_name}></LogConteiner>   
                     </div>
+                    <ButtonStop on_change={state_after_run} name={current_name}></ButtonStop>
                     <ButtonNew on_change={state_new}></ButtonNew>
                     </>
                 ):(
