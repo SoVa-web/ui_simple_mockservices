@@ -8,14 +8,15 @@ export interface Item{
 }
 
 interface Props{
-    list: Item[]
+    list: Item[],
+    on_change_item:any
 }
 
-const ListConteiner:React.FC<Props> = ({list})=>{
+const ListConteiner:React.FC<Props> = ({list, on_change_item})=>{
     return(
-        <ul className='list'>
+        <ul className='list content'>
             {list.map((item) => (
-            <ItemList name={item.name} port={item.port}></ItemList>
+            <ItemList name={item.name} port={item.port} on_change={on_change_item}></ItemList>
             ))}
         </ul>
     )

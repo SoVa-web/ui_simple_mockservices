@@ -31,8 +31,22 @@ label{
     text-align: left;
 }
 
+p{
+    text-align: left;
+}
+
 #Input-conteiner{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
     grid-gap: 15px; 
+}
+
+.content{
+    height: 400px;
+}
+
+.textarea{
+    width: '100%';  
+    resize: 'none'; 
+    overflow: 'auto';
 }

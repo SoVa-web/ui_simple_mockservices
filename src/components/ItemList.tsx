@@ -5,31 +5,13 @@ import port_server from "../port_server";
 
 interface Props{
     name: string,
-    port: number
+    port: number,
+    on_change:any
 }
 
-const ItemList:React.FC<Props> = ({name, port})=>{
-    async function get_log(){
-        const url = new URL(`http://localhost:${port_server}/log?name_project=${name}`);
-          const response = await fetch(url, {
-                mode: 'cors',
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            });
-          
-        const data = await response.json();
-        console.log("Logs are got");
-        return data
-    }
-
+const ItemList:React.FC<Props> = ({name, port, on_change})=>{
     async function view_log(event: React.MouseEvent<HTMLButtonElement>){
-        let log:string = ""
-        await get_log().then(data=>{
-            console.log(data)
-        })
+        on_change(false, false, true, name, port)
     }
 
     return(
