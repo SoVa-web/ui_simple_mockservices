@@ -13,7 +13,9 @@ interface Props{
 const ButtonRun: React.FC<Props> = ({port, path, name, delay, on_change})=>{
 
     async function fetch_create():Promise<any>{
-        const url = new URL(`http://localhost:${port_server}/create?port=${port}&path_openapi=${path}&name_project=${name}&delay=${delay}`);
+        let path_replaced = path.replace(/\\/g, "/")
+        console.log(path_replaced)
+        const url = new URL(`http://localhost:${port_server}/create?port=${port}&path_openapi=${path_replaced}&name_project=${name}&delay=${delay}`);
 
         try {
           const response = await fetch(url, {
@@ -26,7 +28,11 @@ const ButtonRun: React.FC<Props> = ({port, path, name, delay, on_change})=>{
             });
           
           const data = await response.json();
-          return data
+          const stat = response.status
+          return {
+            status: stat,
+            message: data
+          }
         } catch (error) {
           console.log(error);
           return error
@@ -67,12 +73,15 @@ const ButtonRun: React.FC<Props> = ({port, path, name, delay, on_change})=>{
             return
         }
         await fetch_create().then(async res=>{
-            console.log(res)
-            await fetch_run().then(res_run=>{
-                console.log(res_run)
-                alert(res_run);
-                on_change(false, true)
-            })
+            console.log(res.message)
+            if(res.status === 200)
+                await fetch_run().then(res_run=>{
+                    console.log(res_run)
+                    alert(res_run);
+                    on_change(false, true)
+                })
+            else
+                alert(res.message)
         })
     }
 

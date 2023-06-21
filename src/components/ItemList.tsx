@@ -1,6 +1,5 @@
 import React from "react";
 import './styles/main.css'
-import port_server from "../port_server";
 
 
 interface Props{
@@ -18,7 +17,7 @@ const ItemList:React.FC<Props> = ({name, port, on_change})=>{
         <div id={`${name}_${port}`} className='item-list'>
             <p>Name mock-service: {name}</p>
             <p>Port: {port}</p>
-            <button onClick={view_log}>View details</button>
+            <button className="item-button" onClick={view_log}>View details</button>
         </div>
     )
 }

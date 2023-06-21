@@ -21,6 +21,7 @@ function  Main(){
     const [show_details_page, set_show_details_page] = useState(false)
     const [current_name, set_current_name] = useState('')
     const [current_port, set_current_port] = useState(0)
+    const [upd, set_upd]=useState(false)
 
     function read_port(new_port:number){
         set_port(new_port)
@@ -64,6 +65,14 @@ function  Main(){
         set_current_name(current_n)
         set_current_port(current_p)
         set_list([])
+        set_upd(true)
+    }
+
+    function update_details(event: React.MouseEvent<HTMLButtonElement>){
+        set_upd(false)
+        setTimeout(()=>{
+            set_upd(true)
+        }, 1)
     }
 
     async function get_list(){
@@ -82,12 +91,16 @@ function  Main(){
         set_list(data)
     }
 
+
+
     return (
         <div className='App-main' id='App-main'>
             {
                 show_create_page?(
                     <>
-                    <ButtonList on_change={state_after_run}></ButtonList>
+                    <div className='block-button-list level-block'>
+                        <ButtonList on_change={state_after_run}></ButtonList>
+                    </div>
                     <h2 className='name-content' id='name-content'>Creating mock-service</h2>
                     <div id='Input-conteiner' className='content'>
                         <InputCustom label='The name of the mock service' type='text' on_change={read_name}></InputCustom>
@@ -105,7 +118,11 @@ function  Main(){
                 show_list_page?(
                     <>
                     <h2 className='name-content' id='name-content'>List running mock-services</h2>
-                    <ListConteiner list={item_list} on_change_item={state_details}></ListConteiner>
+                    <div className='content-list'>
+                        <div className='scroll-list'>
+                            <ListConteiner list={item_list} on_change_item={state_details}></ListConteiner>
+                        </div>
+                    </div>
                     {
                         (item_list.length === 0)?(
                             <h2 id='empty_list'>Oh. No one running mockservice. Push "Create new"</h2>
@@ -120,15 +137,20 @@ function  Main(){
                 )
             }
             {
-                show_details_page?(
+                (show_details_page && upd)?(
                     <>
-                    <ButtonList on_change={state_after_run}></ButtonList>
-                    <h2 className='name-content' id='name-content'>Details mock-servise {current_name} on port {current_port}</h2>
-                    <div id='Input-conteiner' className='content'>
-                    <LogConteiner log_file={current_name}></LogConteiner>   
+                    <div className='block-button-list level-block'>
+                        <ButtonList on_change={state_after_run}></ButtonList>
                     </div>
-                    <ButtonStop on_change={state_after_run} name={current_name}></ButtonStop>
-                    <ButtonNew on_change={state_new}></ButtonNew>
+                    <div className='block-name-page level-block'>
+                        <h2 className='name-content' id='name-content'>Details mock-servise {current_name} on port {current_port}</h2>
+                    </div>
+                    <LogConteiner log_file={current_name}></LogConteiner>    
+                    <div className='bottom-button level-block'>
+                        <ButtonStop on_change={state_after_run} name={current_name}></ButtonStop>
+                        <ButtonNew on_change={state_new}></ButtonNew>
+                        <button className='button-stop' onClick={update_details}>Update</button>
+                    </div>
                     </>
                 ):(
                     <></>

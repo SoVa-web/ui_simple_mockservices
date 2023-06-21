@@ -12,7 +12,7 @@ const InputChoosePath: React.FC<Props> = ({ label, type, on_change }) => {
   
     function handle_change(event:ChangeEvent<HTMLInputElement>){
       if(event.target.value != null){
-        const path:RegExp = /^[A-Za-z]:[/](?:[^/]+[/])*[^/]+$/;
+        const path:RegExp = /^[A-Za-z]:[\\/](?:[^\\/]+[\\/])*[^\\/]+$/;
         path.test(event.target.value)
         if (path.test(event.target.value) && event.target.value.endsWith('.yaml')) {
           set_file(event.target.value.replace('/\\/g', '/'));
