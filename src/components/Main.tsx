@@ -87,7 +87,6 @@ function  Main(){
             });
           
         const data:any = await response.json();
-        console.log(data);
         set_list(data)
     }
 

@@ -14,7 +14,6 @@ const ButtonRun: React.FC<Props> = ({port, path, name, delay, on_change})=>{
 
     async function fetch_create():Promise<any>{
         let path_replaced = path.replace(/\\/g, "/")
-        console.log(path_replaced)
         const url = new URL(`http://localhost:${port_server}/create?port=${port}&path_openapi=${path_replaced}&name_project=${name}&delay=${delay}`);
 
         try {
@@ -51,7 +50,6 @@ const ButtonRun: React.FC<Props> = ({port, path, name, delay, on_change})=>{
             });
           
           const data = await response.json();
-          console.log(data);
           return data
     }
     
@@ -73,10 +71,8 @@ const ButtonRun: React.FC<Props> = ({port, path, name, delay, on_change})=>{
             return
         }
         await fetch_create().then(async res=>{
-            console.log(res.message)
             if(res.status === 200)
                 await fetch_run().then(res_run=>{
-                    console.log(res_run)
                     alert(res_run);
                     on_change(false, true)
                 })

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './styles/main.css'
 import port_server from '../port_server'
+import socketIOClient from 'socket.io-client'
 
 interface Props{
     log_file:string
@@ -9,6 +10,11 @@ interface Props{
 const LogConteiner:React.FC<Props> = ({log_file})=>{
     const [log, set_log] = useState('')
     const [log_is, set_get] = useState(false)
+    const socket = socketIOClient(`http://localhost:5003/`, {
+        query:{
+            username:"ui"
+        }
+    })
 
 
     async function get_log(){
@@ -39,6 +45,20 @@ const LogConteiner:React.FC<Props> = ({log_file})=>{
           set_get(true);
         });
     }, []);
+
+    useEffect(() => {
+        socket.on('log',  (data) => {
+            if(data.name_service === log_file){
+                setTimeout(()=>{
+                    set_log(log => log + data.content)
+                }, 1000)           
+            }  
+        })
+
+        return () => {
+            socket.close();
+        }
+    }, [log, log_file, socket])
 
 
     if (!log_is) {
