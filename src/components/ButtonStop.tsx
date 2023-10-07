@@ -22,7 +22,6 @@ const ButtonStop: React.FC<Props> = ({on_change, name})=>{
             });
           
         const data:any = await response.json();
-        console.log(data);
         return data
     }
 
@@ -38,15 +37,12 @@ const ButtonStop: React.FC<Props> = ({on_change, name})=>{
             });
           
         const data:any = await response.json();
-        console.log(data);
         return data
     }
 
     function delete_service(event: React.MouseEvent<HTMLButtonElement>){
         stop().then((res)=>{
-            console.log(res)
             del_service().then((response)=>{
-                console.log(response)
                 on_change(false, true, false)
             })
         })

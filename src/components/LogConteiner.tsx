@@ -48,16 +48,17 @@ const LogConteiner:React.FC<Props> = ({log_file})=>{
 
     useEffect(() => {
         socket.on('log',  (data) => {
-            console.log(data)
             if(data.name_service === log_file){
-                 set_log(log + data.content)
+                setTimeout(()=>{
+                    set_log(log => log + data.content)
+                }, 1000)           
             }  
         })
 
         return () => {
             socket.close();
         }
-    }, [log])
+    }, [log, log_file, socket])
 
 
     if (!log_is) {
